@@ -1,8 +1,4 @@
-export type Movie = {
-    id: string;
-    title: string;
-    releaseYear: string;
-  };
+import { useState } from "react";
 
 export type User = {
     "id": number,
@@ -26,4 +22,13 @@ export type User = {
       "catchPhrase": string,
       "bs": string
     }
-  }
+  };
+
+
+  export type Post = {
+    "userId": number,
+    "id": number,
+    "title": string,
+    "body": string
+  };
+
