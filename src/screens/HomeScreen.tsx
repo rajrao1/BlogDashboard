@@ -1,12 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, Text, View} from 'react-native';
-import {User, Post} from './DataTypes';
+import React, {useState, useEffect} from 'react';
+import {View, Text, ActivityIndicator, FlatList} from 'react-native';
 
-
-const APICall = () => {
-  const [isLoading, setLoading] = useState(true);
+const HomeScreen = () => {
+    const [isLoading, setLoading] = useState(true);
   const [users, setUsers] = useState<User[]>([]);
-  const [posts, setPosts] = useState<Post[]>([]);
 
   function randomUser(min:number, max:number) { // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min)
@@ -26,23 +23,9 @@ const APICall = () => {
     }
   };
 
-
-  const getPosts = async () => {
-    try {
-      let userId:number = randomUser(1, 10);
-      const response = await fetch('https://jsonplaceholder.typicode.com/users/'+ userId.toString()+'/posts');
-      const json = await response.json();
-      setPosts(json);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
  
   useEffect(() => {
-    getPosts();
+    getUser();
   }, []);
 
   return (
@@ -51,7 +34,7 @@ const APICall = () => {
         <ActivityIndicator />
       ) : (
         <FlatList
-          data={posts}
+          data={users}
           keyExtractor={({id}) => id}
           renderItem={({item}) => (
             <Text>
@@ -62,7 +45,6 @@ const APICall = () => {
       )}
     </View>
   );
-  return null;
-};
+  }
 
-export default APICall;
+export default HomeScreen;
