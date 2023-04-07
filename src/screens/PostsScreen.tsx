@@ -10,7 +10,7 @@ const PostsScreen = () => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
 
-  const getPosts = async () => {
+  const getPostsData = async () => {
     try {
       let userId:number = randomUser(1, 10);
       const response = await fetch('https://jsonplaceholder.typicode.com/users/'+ userId.toString()+'/posts');
@@ -25,10 +25,10 @@ const PostsScreen = () => {
 
  
   useEffect(() => {
-    getPosts();
+    getPostsData();
   }, []);
 
-  renderPostDetails = (item: any) =>{
+  const renderPostDetails = (item: any) =>{
     return <View>
     <View style={{flexDirection: 'row'}}>
         <View style={{flex: 1, paddingRight: 5}}>

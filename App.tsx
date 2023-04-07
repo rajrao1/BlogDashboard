@@ -12,10 +12,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import PostsScreen from './src/screens/PostsScreen';
 import DashboardScreen from './src/screens/Dashboards';
-import ProfileCard from './src/components/ProfileCard';
-import { CustomerDrawerLabel } from './src/components/CustomDrawerLabel';
-import CustomSidebarMenu from './src/components/ProfileCard';
 import ProfileScreen from './src/screens/Profile';
+import CustomSidebarMenu from './src/components/ProfileCard';
+
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -57,9 +56,9 @@ function MyDrawer() {
       itemStyle: {marginVertical: 5},
     }}
     drawerContent={props => <CustomSidebarMenu {...props} />}>
-      <Drawer.Screen options={{drawerLabel: 'Posts', title: 'Posts'}} name="Posts" component={PostsScreenStack} />
-      <Drawer.Screen options={{drawerLabel: 'Dashboard', title: 'Dashboard'}} name="Dashboard" component={DashboardScreenStack} />
-      <Drawer.Screen options={{drawerLabel: 'User Profile', title: 'User Profile'}} name="ProfileScreen" component={ProfileScreenStack} />
+      <Drawer.Screen options={{drawerLabel: 'Posts', title: 'Posts'}} name="PostsD" component={PostsScreenStack} />
+      <Drawer.Screen options={{drawerLabel: 'Dashboard', title: 'Dashboard'}} name="DashboardD" component={DashboardScreenStack} />
+      <Drawer.Screen options={{drawerLabel: 'User Profile', title: 'User Profile'}} name="ProfileScreenD" component={ProfileScreenStack} />
     </Drawer.Navigator>
   );
 }
