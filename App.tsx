@@ -7,13 +7,18 @@
 
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import APICall from './src/components/APICall';
+// import APICall from './src/components/APICall';
+import { NavigationContainer } from '@react-navigation/native';
+
 
 function App(): JSX.Element {
   return(
+    <NavigationContainer>
     <View style={{flex: 1}}>
-      <APICall />
+      {/* <APICall /> */}
+      <Text>Hello World</Text>
     </View>
+    </NavigationContainer>
   );
 }
 
