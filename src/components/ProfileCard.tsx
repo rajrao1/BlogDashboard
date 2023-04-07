@@ -1,9 +1,26 @@
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView,View, Text, ActivityIndicator, FlatList} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  Linking,
+  ActivityIndicator,
+} from 'react-native';
 
-const ProfileCard = () => {
+import {
+  DrawerContentScrollView,
+  DrawerItemList,
+} from '@react-navigation/drawer';
+import { getUser } from '../api/getUser';
 
-const [isLoading, setLoading] = useState(true);
+const CustomSidebarMenu = (props) => {
+  const BASE_PATH =
+    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/';
+  const proileImage = 'react_logo.png';
+
+  const [isLoading, setLoading] = useState(true);
   const [users, setUsers] = useState<User[]>([]);
 
   console.log('Users', users);
@@ -25,25 +42,42 @@ const [isLoading, setLoading] = useState(true);
     }
   };
 
- 
   useEffect(() => {
     getUser();
   }, []);
 
   return (
-    <SafeAreaView style={{backgroundColor: 'yellow'}}>
-      {isLoading ? (
+    <SafeAreaView style={{flex: 1}}>
+        {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <View>
+        <><Image
+        source={{uri: 'https://randomuser.me/api/Portraits/men/1.jpg'}}
+        style={styles.sideMenuProfileIcon}
+      />
+       <View style={{ justifyContent: 'center', alignItems: 'center'}}>
             <Text>{users[0].name}</Text>
             <Text>{users[0].username}</Text>
             <Text>{users[0].email}</Text>
             <Text>{users[0].phone}</Text>
         </View>
+        </>
       )}
+      <DrawerContentScrollView {...props}>
+        <DrawerItemList {...props} />
+      </DrawerContentScrollView>
     </SafeAreaView>
   );
-  }
+};
 
-export default ProfileCard;
+const styles = StyleSheet.create({
+  sideMenuProfileIcon: {
+    width: 100,
+    height: 100,
+    borderRadius: 100 / 2,
+    alignSelf: 'center',
+    marginVertical: 5
+  },
+});
+
+export default CustomSidebarMenu;

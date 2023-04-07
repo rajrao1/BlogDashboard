@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, ActivityIndicator, FlatList} from 'react-native';
+import { Post } from '../components/DataTypes';
 
 const PostsScreen = () => {
-    const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
   const [posts, setPosts] = useState<Post[]>([]);
 
   function randomUser(min:number, max:number) { // min and max included
@@ -28,10 +29,9 @@ const PostsScreen = () => {
   }, []);
 
   renderPostDetails = (item: any) =>{
-    console.log('Item', item);
     return <View>
     <View style={{flexDirection: 'row'}}>
-        <View style={{flex: 1}}>
+        <View style={{flex: 1, paddingRight: 5}}>
         <Text>
           {item.item.title}
         </Text>

@@ -1,9 +1,11 @@
 import React from "react";
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 const DashboardScreen = () => {
     return (
-<Text>This is Dashboard screen</Text>
+        <View style ={{flex:1, alignItems: 'center', justifyContent:'center'}}>
+        <Text>Dashboard</Text>
+        </View>
     );
 }
 
